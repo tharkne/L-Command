@@ -1,1 +1,8 @@
-'Pixel Square' font from user Joakin on Dafont https://www.dafont.com/joakin.d2591
+'Pixel Square' font from user Joakin on Dafont - https://www.dafont.com/joakin.d2591
+
+Obstacle Spawner & Movement Scripts referenced from Beat Saber Tutorial by YouTube user Valem - https://www.youtube.com/watch?v=gh4k0Q1Pl7E
+
+Fade-Out Colour Effect referenced from user Mukabr on Unity Forums - https://answers.unity.com/questions/1230671/how-to-fade-out-a-game-object-using-c.html
+
+Pop-Up/Fade-out Score and Fuel Text referenced from Holistic3d on YouTube - https://www.youtube.com/watch?v=N1zHC6vSGLI
+

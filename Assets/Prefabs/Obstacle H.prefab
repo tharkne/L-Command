@@ -195,6 +195,8 @@ GameObject:
   - component: {fileID: 4943663711294443731}
   - component: {fileID: 6938167029520676997}
   - component: {fileID: 656014486900481483}
+  - component: {fileID: -7078152418523940392}
+  - component: {fileID: -7224567680681971491}
   m_Layer: 0
   m_Name: Obstacle H
   m_TagString: Untagged
@@ -244,3 +246,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7078152418523940392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736512469198165621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9a216d5b838534cbc0676e65038e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7224567680681971491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736512469198165621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e8e29666e38954387b69322dcbe1bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

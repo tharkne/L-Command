@@ -106,7 +106,7 @@ public class StickMovement : MonoBehaviour
                 // cancel strafe and unlock bound if user changes stick direction
                 if(Mathf.Abs(vert - hStrafeActivationDirection) >= 1.3 && Mathf.Abs(transform.position.x) < 6)
                 {
-                    Debug.Log("Horizontal Strafe Deactivated");
+                    // Debug.Log("Horizontal Strafe Deactivated");
                     hStrafe = false;
                     // inBounds = true;
                     rb.velocity = returnSpeed * Vector3.Normalize(basePosition - transform.position);
@@ -123,7 +123,7 @@ public class StickMovement : MonoBehaviour
                     {
                         rb.velocity = -.001f * rb.velocity;
                     }
-                    else if (Mathf.Abs(horiz) > .7)
+                    else if (Mathf.Abs(horiz) > .6)
                     {   
                         horiz = 1.0f * Mathf.Sign(horiz);
                         rb.velocity = strafeSpeed * new Vector3(horiz, vert, 0);
@@ -144,7 +144,7 @@ public class StickMovement : MonoBehaviour
                 // cancel strafe and unlock bound if user changes stick direction
                 if (Mathf.Abs(horiz - vStrafeActivationDirection) >= 1.3 && Mathf.Abs(transform.position.y) < 6)
                 {
-                    Debug.Log("Vertical Strafe Deactivated");
+                    // Debug.Log("Vertical Strafe Deactivated");
                     vStrafe = false;
                     // inBounds = true;
                     rb.velocity = returnSpeed * Vector3.Normalize(basePosition - transform.position);
@@ -153,7 +153,7 @@ public class StickMovement : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Vertical Strafe");
+                    //Debug.Log("Vertical Strafe");
 
                     horiz = 0f;
 
@@ -162,7 +162,7 @@ public class StickMovement : MonoBehaviour
                     {
                         rb.velocity = -.001f * rb.velocity;
                     }
-                    else if (Mathf.Abs(vert) > .7)
+                    else if (Mathf.Abs(vert) > .6)
                     {
                         vert = 1.0f * Mathf.Sign(vert);
                         rb.velocity = strafeSpeed * new Vector3(horiz, vert, 0);
@@ -195,7 +195,7 @@ public class StickMovement : MonoBehaviour
     {
         if(other.gameObject.tag == "Bound Box")
         {
-            Debug.Log("Left Game area");
+            // Debug.Log("Left Game area");
             inBounds = false;
         }
 
