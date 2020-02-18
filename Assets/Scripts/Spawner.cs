@@ -100,6 +100,8 @@ public class Spawner : MonoBehaviour
     {
         // Spawn main balls
 
+        int tutorialDir = Random.Range(0, 4);
+
         if (gameManager.getScore() > 500)
         {
             for (int i = 0; i < 4; i++)
@@ -121,8 +123,12 @@ public class Spawner : MonoBehaviour
             // assign ball a random material
 
 
+            
+
             // place the ball in one of the four cardinal directions in relation to spawner
-            pointBall.transform.position = cardDirStart[Random.Range(0, 4)] + transform.position;
+            pointBall.transform.position = cardDirStart[tutorialDir] + transform.position;
+
+
 
             // pointBall.GetComponent<MeshRenderer>().Materials[0] = materials[Random.Range(0, 4)];
             pointBall.GetComponent<MeshRenderer>().material = materials[Random.Range(0, 4)];
@@ -131,7 +137,7 @@ public class Spawner : MonoBehaviour
 
 
 
-        if (gameManager.getScore() > 300)
+        if (gameManager.getScore() > 500)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -141,13 +147,37 @@ public class Spawner : MonoBehaviour
                 fuelBall.transform.position = auxDirStart[i] + transform.position;
             }
         }
-        else 
+        else if (gameManager.getScore() > 300)
         {
             GameObject fuelBall = Instantiate(fuelBallFab);
+            GameObject fuelBall2 = Instantiate(fuelBallFab);
+
+
+            if (tutorialDir == 0)
+            {
+                fuelBall.transform.position = auxDirStart[0] + transform.position;
+                fuelBall2.transform.position = auxDirStart[1] + transform.position;
+            }
+            else if (tutorialDir == 1)
+            {
+                fuelBall.transform.position = auxDirStart[2] + transform.position;
+                fuelBall2.transform.position = auxDirStart[3] + transform.position;
+            }
+            else if (tutorialDir == 2)
+            {
+                fuelBall.transform.position = auxDirStart[1] + transform.position;
+                fuelBall2.transform.position = auxDirStart[2] + transform.position;
+            }
+            else if (tutorialDir == 3)
+            {
+                fuelBall.transform.position = auxDirStart[0] + transform.position;
+                fuelBall2.transform.position = auxDirStart[3] + transform.position;
+            }
+
 
             // place the ball in one of the four cardinal directions in relation to spawner
-            fuelBall.transform.position = auxDirStart[Random.Range(0, 4)] + transform.position;
-            
+
+
         }
     }
 }

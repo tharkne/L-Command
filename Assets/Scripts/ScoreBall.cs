@@ -10,6 +10,10 @@ public class ScoreBall : MonoBehaviour
     GameObject gm;
     GameManager gameManager;
 
+    AudioSource audio;
+
+    public AudioClip[] boops;
+
     public GameObject ballTextField;
 
 
@@ -31,6 +35,8 @@ public class ScoreBall : MonoBehaviour
 
         gm = GameObject.Find("Game Manager");
         gameManager = gm.GetComponent<GameManager>();
+
+        audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
 
 
 
@@ -116,7 +122,7 @@ public class ScoreBall : MonoBehaviour
         {
             if (activeGamepad.aButton.wasPressedThisFrame)
             {
-                OnCollect(player);
+                OnCollect(player, 3);
                 
             }
         }
@@ -124,13 +130,13 @@ public class ScoreBall : MonoBehaviour
         {
             if (activeGamepad.xButton.wasPressedThisFrame)
             {
-                OnCollect(player);
+                OnCollect(player, 1);
             }
         }
         else if (matName.Contains("Red")) {
             if (activeGamepad.bButton.wasPressedThisFrame)
             {
-                OnCollect(player);
+                OnCollect(player, 0);
             }
         }
         else if (matName.Contains("Yellow")) {
@@ -139,16 +145,18 @@ public class ScoreBall : MonoBehaviour
             {
                 //Debug.Log();
 
-                OnCollect(player);
+                OnCollect(player, 2);
             } 
         }
     }
 
-    void OnCollect(GameObject player)
+    void OnCollect(GameObject player, int boopNum)
     {
         if (scorable)
         {
             CalcScore(Vector3.Distance(transform.position, player.transform.position));
+
+            audio.PlayOneShot(boops[boopNum], .15f);
 
             this.gameObject.SetActive(false);
             Destroy(ballText);
@@ -158,6 +166,11 @@ public class ScoreBall : MonoBehaviour
     void CalcScore(float distance)
     {
         int baseline = (int)(100 - distance * 10);
+
+        if(baseline < 5)
+        {
+            baseline = 5;
+        }
 
         gameManager.ChangeScore(baseline);
         gameManager.ChangeFuel(2f);

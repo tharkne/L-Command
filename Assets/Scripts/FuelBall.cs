@@ -7,6 +7,10 @@ public class FuelBall : MonoBehaviour
     GameObject gm;
     GameManager gameManager;
 
+    public AudioClip boop;
+
+    AudioSource audio;
+
     bool scorable;
     
 
@@ -16,6 +20,7 @@ public class FuelBall : MonoBehaviour
         gm = GameObject.Find("Game Manager");
         gameManager = gm.GetComponent<GameManager>();
 
+        audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
 
         scorable = true;
     }
@@ -34,7 +39,13 @@ public class FuelBall : MonoBehaviour
         {
             gameManager.ChangeFuel(10f);
             gameManager.ChangeScore(10f);
+
+
+            audio.PlayOneShot(boop, .19f);
+
             Destroy(gameObject);
+
+
         }
     }
 

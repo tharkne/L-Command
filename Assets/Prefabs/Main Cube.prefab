@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.8, z: 1}
+  m_Size: {x: 2.2, y: 2.2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &807340910882584512
 MonoBehaviour:
@@ -134,6 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a631905cd14b8d048a8d16848f9dd7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boops:
+  - {fileID: 8300000, guid: a58877bcb528f504f97ca141e28251d0, type: 3}
+  - {fileID: 8300000, guid: d0aa9443708693c42a00f7d84551bb3a, type: 3}
+  - {fileID: 8300000, guid: be9e0ad8b6ed33341bf2c6001ae66733, type: 3}
+  - {fileID: 8300000, guid: 7345ee9cadba0b343a36153619619b83, type: 3}
   ballTextField: {fileID: 3484571625076747542, guid: e73b47d5844de1c42aa62c157a7fe509,
     type: 3}
 --- !u!114 &-8016544329110956279

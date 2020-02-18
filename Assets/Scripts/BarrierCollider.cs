@@ -8,6 +8,8 @@ public class BarrierCollider : MonoBehaviour
 {
     public GameManager gameManager;
 
+    public AudioSource audio;
+
     public Text fuelText;
 
     private void OnTriggerStay(Collider other)
@@ -32,6 +34,8 @@ public class BarrierCollider : MonoBehaviour
             fuelText.color = damageColor;
             Debug.Log("Cannot Score");
             gameManager.setCanScore(false);
+
+            audio.volume = .3f;
         }
         
     }
@@ -43,6 +47,8 @@ public class BarrierCollider : MonoBehaviour
             fuelText.color = Color.white;
             Debug.Log("Can Score");
             gameManager.setCanScore(true);
+
+            audio.volume = 1f;
         }
         
     }
