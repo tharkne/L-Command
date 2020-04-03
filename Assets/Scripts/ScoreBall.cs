@@ -61,21 +61,43 @@ public class ScoreBall : MonoBehaviour
 
         ballText.transform.position = transform.position + new Vector3(.4f, 0, -1.3f);
 
-        if (matName.Contains("Green"))
+        if (Gamepad.current != null)
         {
-            ballText.GetComponent<TMP_Text>().text = "A";
+            if (matName.Contains("Green"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "A";
+            }
+            else if (matName.Contains("Blue"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "X";
+            }
+            else if (matName.Contains("Red"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "B";
+            }
+            else if (matName.Contains("Yellow"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "Y";
+            }
         }
-        else if (matName.Contains("Blue"))
+        else
         {
-            ballText.GetComponent<TMP_Text>().text = "X";
-        }
-        else if (matName.Contains("Red"))
-        {
-            ballText.GetComponent<TMP_Text>().text = "B";
-        }
-        else if (matName.Contains("Yellow"))
-        {
-            ballText.GetComponent<TMP_Text>().text = "Y";
+            if (matName.Contains("Green"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "S";
+            }
+            else if (matName.Contains("Blue"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "A";
+            }
+            else if (matName.Contains("Red"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "D";
+            }
+            else if (matName.Contains("Yellow"))
+            {
+                ballText.GetComponent<TMP_Text>().text = "W";
+            }
         }
     }
 
@@ -118,35 +140,75 @@ public class ScoreBall : MonoBehaviour
         Gamepad activeGamepad = Gamepad.current;
         //Debug.Log(matName);
 
-        if (matName.Contains("Green"))
+        if (activeGamepad != null)
         {
-            if (activeGamepad.aButton.wasPressedThisFrame)
+            if (matName.Contains("Green"))
             {
-                OnCollect(player, 3);
-                
-            }
-        }
-        else if (matName.Contains("Blue"))
-        {
-            if (activeGamepad.xButton.wasPressedThisFrame)
-            {
-                OnCollect(player, 1);
-            }
-        }
-        else if (matName.Contains("Red")) {
-            if (activeGamepad.bButton.wasPressedThisFrame)
-            {
-                OnCollect(player, 0);
-            }
-        }
-        else if (matName.Contains("Yellow")) {
-           
-            if (activeGamepad.yButton.wasPressedThisFrame)
-            {
-                //Debug.Log();
+                if (activeGamepad.aButton.isPressed)
+                {
+                    OnCollect(player, 3);
 
-                OnCollect(player, 2);
-            } 
+                }
+            }
+            else if (matName.Contains("Blue"))
+            {
+                if (activeGamepad.xButton.isPressed)
+                {
+                    OnCollect(player, 1);
+                }
+            }
+            else if (matName.Contains("Red"))
+            {
+                if (activeGamepad.bButton.isPressed)
+                {
+                    OnCollect(player, 0);
+                }
+            }
+            else if (matName.Contains("Yellow"))
+            {
+
+                if (activeGamepad.yButton.isPressed)
+                {
+                    //Debug.Log();
+
+                    OnCollect(player, 2);
+                }
+            }
+        }
+        else
+        {
+            if (matName.Contains("Green"))
+            {
+                if (Input.GetKey(KeyCode.S))
+                {
+                    OnCollect(player, 3);
+
+                }
+            }
+            else if (matName.Contains("Blue"))
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    OnCollect(player, 1);
+                }
+            }
+            else if (matName.Contains("Red"))
+            {
+                if (Input.GetKey(KeyCode.D))
+                {
+                    OnCollect(player, 0);
+                }
+            }
+            else if (matName.Contains("Yellow"))
+            {
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    //Debug.Log();
+
+                    OnCollect(player, 2);
+                }
+            }
         }
     }
 

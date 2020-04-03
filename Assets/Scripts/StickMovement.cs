@@ -58,11 +58,22 @@ public class StickMovement : MonoBehaviour
     {
         Gamepad active_gamepad = Gamepad.current;
 
-        float horiz = active_gamepad.leftStick.x.ReadValue();
-        float vert = active_gamepad.leftStick.y.ReadValue();
+        float horiz;
+        float vert;
 
-        bool a_pressed_this_frame = active_gamepad.aButton.wasPressedThisFrame;
-        bool b_pressed_this_frame = active_gamepad.bButton.wasPressedThisFrame;
+        if (active_gamepad != null)
+        {
+            horiz = active_gamepad.leftStick.x.ReadValue();
+            vert = active_gamepad.leftStick.y.ReadValue();
+        }
+        else
+        {
+            horiz = Input.GetAxisRaw("Horizontal");
+            vert = Input.GetAxisRaw("Vertical");
+        }
+
+        //bool a_pressed_this_frame = active_gamepad.aButton.wasPressedThisFrame;
+        //bool b_pressed_this_frame = active_gamepad.bButton.wasPressedThisFrame;
 
         // List<Gamepad> game_pads = new List<Gamepad>(Gamepad.all);
 

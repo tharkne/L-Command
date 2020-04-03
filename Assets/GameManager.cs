@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public Text fuelPopUp;
     public Text scorePopUp;
 
+    public AudioSource audio;
+
+    public bool keyboardControls = false;
+
     float fuelVal;
     float scoreVal;
 
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
 
             time += Time.deltaTime;
         }
+
+        audio.volume = fuelVal / 100f;
 
         //if(Time.time > 5 && Time.time < 10)
         //{
@@ -104,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScore(float change)
     {
-        if (canScore)
+        if (canScore && !gameOver)
         {
             scorePopUp.text = "+" + change;
             StartCoroutine(TextFade(scorePopUp));
@@ -135,9 +141,28 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameOverText.text = "GAME OVER";
 
-        yield return new WaitForSeconds(3f);
+        StartCoroutine(TextFadeIn(gameOverText));
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(4f);
+
+        SceneManager.LoadScene("Menu");
+
+        yield return null;
+    }
+
+    public IEnumerator TextFadeIn(Text text)
+    {
+        float fadespeed = 1.0f / 2;
+
+        Color c = text.color;
+        c.a = 0f;
+
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime * fadespeed)
+        {
+            c.a = Mathf.Lerp(0, 1, t);
+            text.color = c;
+            yield return true;
+        }
 
         yield return null;
     }

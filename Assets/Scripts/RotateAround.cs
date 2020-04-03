@@ -18,6 +18,8 @@ public class RotateAround : MonoBehaviour
 
     float gameTime = 0;
 
+    float rotateWait = 0;
+
     GameObject gm;
     GameManager gameManager;
 
@@ -54,41 +56,54 @@ public class RotateAround : MonoBehaviour
 
         purpleMat = (Material)Resources.Load("Danger Purple", typeof(Material));
 
-        if (totalRotation == 180 && gameManager.getScore() > 1500)
+        if (totalRotation == 180 && gameManager.getScore() > 1700)
         {
-            foreach(Transform child in transform)
+            if (gameManager.getScore() > 3400)
             {
-                foreach (MeshRenderer obMesh in child.GetComponentsInChildren<MeshRenderer>())
+                totalRotation = 90;
+            }
+            else
+            {
+                foreach (Transform child in transform)
                 {
-                    obMesh.material = purpleMat;
+                    foreach (MeshRenderer obMesh in child.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        obMesh.material = purpleMat;
+                    }
                 }
             }
         }
+
+        rotateWait = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.getScore() > 1500)
+
+        // rotateWait += Time.deltaTime;
+
+        if (gameManager.getScore() > 1700)
         {
+
             if (totalSpin <= totalRotation)
             {
                 transform.Rotate(0, 0, direction * 3, Space.World);
                 totalSpin += 3;
             }
 
-            Material pinkMat = (Material)Resources.Load("Danger Pink", typeof(Material));
+            //Material pinkMat = (Material)Resources.Load("Danger Pink", typeof(Material));
 
-            if (totalRotation == 180 && totalSpin > 90)
-            {
-                foreach (Transform child in transform)
-                {
-                    foreach (MeshRenderer obMesh in child.GetComponentsInChildren<MeshRenderer>())
-                    {
-                        obMesh.material = pinkMat;
-                    }
-                }
-            }
+            //if (totalRotation == 180 && totalSpin > 90)
+            //{
+            //    foreach (Transform child in transform)
+            //    {
+            //        foreach (MeshRenderer obMesh in child.GetComponentsInChildren<MeshRenderer>())
+            //        {
+            //            obMesh.material = pinkMat;
+            //        }
+            //    }
+            //}
         }
 
     }

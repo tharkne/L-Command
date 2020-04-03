@@ -32,10 +32,9 @@ public class FuelBall : MonoBehaviour
     }
 
 
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && scorable)
+        if (other.gameObject.tag == "Player" && scorable)
         {
             gameManager.ChangeFuel(10f);
             gameManager.ChangeScore(10f);

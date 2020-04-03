@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
     {
         spawnTime = 0;
         gameTime = 0;
-        interval = 2;
+        interval = 2.5f;
 
         gm = GameObject.Find("Game Manager");
         gameManager = gm.GetComponent<GameManager>();
@@ -81,9 +81,9 @@ public class Spawner : MonoBehaviour
 
     void SpawnObstacles()
     {
-        if (gameManager.getScore() > 500)
+        if (gameManager.getScore() > 750)
         {
-            GameObject ob = Instantiate(obstacles[Random.Range(0, 7)]);
+            GameObject ob = Instantiate(obstacles[Random.Range(0, 8)]);
             ob.transform.localPosition = transform.position;
 
 
@@ -102,7 +102,7 @@ public class Spawner : MonoBehaviour
 
         int tutorialDir = Random.Range(0, 4);
 
-        if (gameManager.getScore() > 500)
+        if (gameManager.getScore() > 750)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -137,7 +137,7 @@ public class Spawner : MonoBehaviour
 
 
 
-        if (gameManager.getScore() > 500)
+        if (gameManager.getScore() > 750)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -147,7 +147,7 @@ public class Spawner : MonoBehaviour
                 fuelBall.transform.position = auxDirStart[i] + transform.position;
             }
         }
-        else if (gameManager.getScore() > 300)
+        else if (gameManager.getScore() > 400)
         {
             GameObject fuelBall = Instantiate(fuelBallFab);
             GameObject fuelBall2 = Instantiate(fuelBallFab);
